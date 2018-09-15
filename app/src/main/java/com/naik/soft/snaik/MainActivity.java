@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -104,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.signUp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUp(email.getText().toString(), password.getText().toString());
+                signUp(email.getText().toString(), password.getText().toString(),
+                        ((EditText)findViewById(R.id.name)).getText().toString());
             }
         });
 
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void signUp(String email, String password) {
+    private void signUp(final String email, String password, final String name) {
         if(email.length() > 0 && password.length() > 0){
 
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -155,6 +157,13 @@ public class MainActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+
+
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(name).build();
+
+                                user.updateProfile(profileUpdates);
+
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.

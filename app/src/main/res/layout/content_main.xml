@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="email id"
                 android:inputType="textEmailAddress"
                 tools:layout_editor_absoluteX="122dp"
                 tools:layout_editor_absoluteY="164dp" />
@@ -36,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Password"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="122dp"
                 tools:layout_editor_absoluteY="164dp" />
@@ -47,6 +49,17 @@
                 android:text="signIn"
                 tools:layout_editor_absoluteX="160dp"
                 tools:layout_editor_absoluteY="256dp" />
+
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Your Display Name"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="122dp"
+                tools:layout_editor_absoluteY="164dp" />
 
             <Button
                 android:id="@+id/signUp"
